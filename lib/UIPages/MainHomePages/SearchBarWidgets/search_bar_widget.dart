@@ -55,7 +55,7 @@ class SearchWidget extends StatelessWidget {
                         }
                     );
                   },
-                    totalFilters: data.totalFilters,
+                    filterApplied: data.filterApplied,
                   ),
                 ],
               );
@@ -68,8 +68,8 @@ class SearchWidget extends StatelessWidget {
 }
 class FilterIcon extends StatelessWidget {
   final Function()? onTap;
-  final String? totalFilters;
-  const FilterIcon({this.onTap,this.totalFilters, Key? key}) : super(key: key);
+  final bool? filterApplied;
+  const FilterIcon({this.onTap,this.filterApplied, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -90,8 +90,8 @@ class FilterIcon extends StatelessWidget {
                   onTap: onTap,
                   splashColor: const Color(MyColor.colorSplash),
                   child: SizedBox(
-                    height: size/100*80,
-                    width: size/100*80,
+                    height: size/100*86,
+                    width: size/100*86,
                     child:
                     Center(
                       child: SvgPicture.string(
@@ -106,24 +106,19 @@ class FilterIcon extends StatelessWidget {
               ),
             ),
           ),
-          if(totalFilters!=null)...[
+          if(filterApplied==true)...[
             Align(
               alignment: Alignment.topRight,
               child: ClipOval(
                 child: Material(
                   color: const Color(MyColor.colorBlack),
                   child: Container(
-                    height: ScreenSize().heightOnly(2.4),
+                    height: ScreenSize().heightOnly(2.0),
                     alignment: Alignment.center,
-                    width: ScreenSize().heightOnly(2.4),
-                    child: Padding(
-                        padding: EdgeInsets.all(ScreenSize().heightOnly(0.4)),
-                        child: BoldText(
-                          totalFilters??'0',
-                          fontSize: 0.9,
-                          color: MyColor.colorWhite,
-                        )
-
+                    width: ScreenSize().heightOnly(2.0),
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                        border: Border.all(width: 2.2,color: const Color(MyColor.colorWhite))
                     ),
                   ),
                 ),

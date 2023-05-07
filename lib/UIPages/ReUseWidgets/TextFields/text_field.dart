@@ -12,6 +12,8 @@ import 'package:recipley_assignment/src/fonts.dart';
 import 'package:recipley_assignment/src/icons.dart';
 import 'package:recipley_assignment/src/screen_sizes.dart';
 
+import '../../../src/prints.dart';
+
 class TextWidget extends StatelessWidget {
   String? textFieldHeader;
   double? margin;
@@ -163,7 +165,7 @@ class _ShowTextWidgetState extends State<ShowTextWidget> {
                                   controller: widget.controller?.textEditingController,
                                   cursorColor: Colors.black,
                                   onChanged: (text){
-                                    //PrintLogs.print('textttt $text');
+                                    PrintLogs.printLogs('asdasdatextttt $text');
                                     if(widget.callBack!=null)
                                     {
                                       widget.callBack!(text);
@@ -256,6 +258,7 @@ class _ShowTextWidgetState extends State<ShowTextWidget> {
                                   InkWell(
                                     onTap: (){
                                       widget.controller?.textEditingController.clear();
+                                      widget.callBack!('');
                                       data.notifyAll();
                                     },
                                     child: SvgPicture.string(

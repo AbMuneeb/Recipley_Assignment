@@ -21,19 +21,17 @@ class SearchListener extends GetChangeNotifier
 
   void response(String text)
   {
-    if(text.isNotEmpty&&text.replaceAll(' ', '').isNotEmpty) {
-      if (searchOnStoppedTyping != null) {
-        searchOnStoppedTyping?.cancel(); // clear timer
-      }
-      lastTextEdit=DateTime.now().millisecondsSinceEpoch;
-      searchOnStoppedTyping = Timer(Duration(milliseconds: SearchConstants.initialDelay), () {
-        if(DateTime.now().millisecondsSinceEpoch>(lastTextEdit + SearchConstants.initialDelay - SearchConstants.totalDelay))
-        {
-          textCallBack(text);
-        }
-      });
 
+    if (searchOnStoppedTyping != null) {
+      searchOnStoppedTyping?.cancel(); // clear timer
     }
+    lastTextEdit=DateTime.now().millisecondsSinceEpoch;
+    searchOnStoppedTyping = Timer(Duration(milliseconds: SearchConstants.initialDelay), () {
+      if(DateTime.now().millisecondsSinceEpoch>(lastTextEdit + SearchConstants.initialDelay - SearchConstants.totalDelay))
+      {
+        textCallBack(text);
+      }
+    });
   }
 
   @override

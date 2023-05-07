@@ -33,7 +33,7 @@ class MainHomePage extends StatelessWidget {
               preferredSize: Size(ScreenSize().widthOnly(100),ScreenSize().heightOnly(10)),
               child: SearchWidget(
                   textCallBack: (value){
-
+                    Provider.of<FoodDataListener>(context,listen: false).searchViaText(value);
                   }
               ),
             ),
@@ -79,15 +79,18 @@ class _BodyDataState extends State<BodyData> {
           }
         else if(data.apiStatus == ApiStatus.empty)
         {
-          return NotAvailableView(header: GetVariable.foodHeader,text: GetVariable.foodEmpty,icon: LottieString.empty,);
+          return SingleChildScrollView(child: NotAvailableView(header: GetVariable.foodHeader,text: GetVariable.foodEmpty,icon: LottieString.empty,marginTop: 4,));
         }
         else if(data.apiStatus == ApiStatus.error)
         {
-          return NotAvailableView(header: GetVariable.errorHeader,text: GetVariable.errorValue,icon: LottieString.restInPeace,);
+          return SingleChildScrollView(child: NotAvailableView(header: GetVariable.errorHeader,text: GetVariable.errorValue,icon: LottieString.restInPeace,marginTop: 4,));
         }
         else
           {
-            return DefaultCircularProgress();
+            return SingleChildScrollView(child: Padding(
+              padding: EdgeInsets.only(top: ScreenSize().heightOnly(10)),
+              child: DefaultCircularProgress(),
+            ));
           }
       }
     );

@@ -4,13 +4,13 @@ A new Recipley Assigment project.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+For the purpose of easiness i have embedded email and password at the login page
 
-A few resources to get you started if this is your first Flutter project:
+Login credentials are.
+email: test@gmail.com
+password: 123456
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+I have uploaded the video demo for better understanding and below is the given link:
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- [Link of Video Demo](https://youtu.be/gMVnmqyEKq8)
+
